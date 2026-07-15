@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-flf5r$u)$t@s_sm6b%$oq0rvjx4m62gm%g(g@1#)#(b!kcj-ub
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+CSRF_TRUSTED_ORIGINS = ['https://akbarwidya.pythonanywhere.com']
 
 # Application definition
 
