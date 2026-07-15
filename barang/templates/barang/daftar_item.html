@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <title>Sistem Inventaris</title>
+        <!-- Load HTMX dari CDN -->
+        <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+        <style>
+        body { font-family: sans-serif; padding: 20px; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .search-box { margin-bottom: 15px; padding: 8px; width: 300px; }
+.form-input { padding: 6px; margin: 4px 0; width: 250px; display: block; }
+        .form-group p { margin: 5px 0; }
+        </style>
+    </head>
+    <body>
+        <h2>Daftar Barang Inventaris</h2>
+        <!-- Input Pencarian -->
+        <input type="text"
+               name="q"
+               class="search-box"
+               placeholder="Cari nama barang..."
+               hx-get="/"
+               hx-trigger="keyup changed delay:500ms"
+               hx-target="#tabel-body">
+        <!-- Form Tambah Data HTMX -->
+        <div style="background: #f9f9f9;
+                    padding: 15px;
+                    margin-bottom: 20px;
+                    border: 1px solid #ddd;
+                    width: 300px">
+            <h3>Tambah Barang</h3>
+            <form hx-post="{% url 'tambah_item' %}"
+                  hx-target="#tabel-body"
+                  hx-on::after-request="this.reset()"
+                  class="form-group">
+                {% csrf_token %}
+                {{ form.as_p }} <!-- Ini akan otomatis mencetak 4 input berdasarkan file forms.py -->
+                <button type="submit" style="margin-top: 10px; padding: 8px 15px;">Simpan Barang</button>
+            </form>
+        </div>
+        <table>
+            <!-- ... thead tabel tetap sama ... -->
+            <thead>
+                <tr>
+                    <th>Nama Barang</th>
+                    <th>Kategori</th>
+                    <th>Stok</th>
+                    <th>Harga</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody id="tabel-body">
+                {% include 'barang/partial_item.html' %}
+            </tbody>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,10 @@
+<tr>
+    <td>{{ item.nama }}</td>
+    <td>{{ item.kategori.nama }}</td>
+    <td>{{ item.stok }}</td>
+    <td>{{ item.harga }}</td>
+    <td>
+        <button hx-get="{% url 'edit_item' item.id %}" hx-target="closest tr" hx-swap="outerHTML" style="background: #ffa500; color: white; border: none; padding: 5px 10px; cursor: pointer;">Edit</button>
+        <button hx-delete="{% url 'hapus_item' item.id %}" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' hx-target="closest tr" hx-swap="outerHTML" hx-confirm="Yakin ingin menghapus {{ item.nama }}?" style="background: #ff4c4c; color: white; border: none; padding: 5px 10px; cursor: pointer;">Hapus</button>
+    </td>
+</tr>

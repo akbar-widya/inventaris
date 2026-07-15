@@ -1,0 +1,7 @@
+{% for item in items %}
+    {% include 'barang/item_row.html' %}
+{% empty %}
+<tr>
+    <td colspan="5">Barang tidak ditemukan.</td>
+</tr>
+{% endfor %}
