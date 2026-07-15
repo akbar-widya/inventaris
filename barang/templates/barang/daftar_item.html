@@ -15,6 +15,24 @@
         </style>
     </head>
     <body>
+        <div style="background: #333;
+                    color: white;
+                    padding: 10px 20px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 20px">
+            <span>Login sebagai: <strong>{{ user.username }}</strong></span>
+            <form method="post" action="{% url 'logout' %}" style="margin: 0;">
+                {% csrf_token %}
+                <button type="submit"
+                        style="background: #ff4c4c;
+                               border: none;
+                               color: white;
+                               padding: 5px 15px;
+                               cursor: pointer">Logout</button>
+            </form>
+        </div>
         <h2>Daftar Barang Inventaris</h2>
         <!-- Input Pencarian -->
         <input type="text"
