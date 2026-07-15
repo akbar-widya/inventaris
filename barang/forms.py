@@ -6,8 +6,8 @@ class ItemForm(forms.ModelForm):
         model = Item
         fields = ['nama', 'kategori', 'stok', 'harga']
         widgets = {
-            'nama': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Nama Barang'}),
-            'kategori': forms.Select(attrs={'class': 'form-input'}),
-            'stok': forms.NumberInput(attrs={'class': 'form-input'}),
-            'harga': forms.NumberInput(attrs={'class': 'form-input', 'step': '0.01'}),
+            'nama': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nama Barang'}),
+            'kategori': forms.Select(attrs={'class': 'form-select'}),
+            'stok': forms.NumberInput(attrs={'class': 'form-control'}),
+            'harga': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01'}),
         }

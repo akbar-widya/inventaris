@@ -1,19 +1,17 @@
-<tr hx-include="closest tr">
-    <!-- CSRF Token wajib diletakkan di dalam tr untuk operasi POST HTMX -->
+<tr hx-include="closest tr" class="table-warning">
     <td style="display:none;">{% csrf_token %}</td>
-    
-    <td><input type="text" name="nama" value="{{ item.nama }}" class="form-input" style="width: 90%;"></td>
+    <td><input type="text" name="nama" value="{{ item.nama }}" class="form-control form-control-sm"></td>
     <td>
-        <select name="kategori" class="form-input">
+        <select name="kategori" class="form-select form-select-sm">
             {% for kat in kategoris %}
             <option value="{{ kat.id }}" {% if kat.id == item.kategori.id %}selected{% endif %}>{{ kat.nama }}</option>
             {% endfor %}
         </select>
     </td>
-    <td><input type="number" name="stok" value="{{ item.stok }}" class="form-input" style="width: 60px;"></td>
-    <td><input type="number" name="harga" value="{{ item.harga }}" step="0.01" class="form-input" style="width: 80px;"></td>
+    <td><input type="number" name="stok" value="{{ item.stok }}" class="form-control form-control-sm"></td>
+    <td><input type="number" name="harga" value="{{ item.harga }}" step="0.01" class="form-control form-control-sm"></td>
     <td>
-        <button hx-post="{% url 'edit_item' item.id %}" hx-target="closest tr" hx-swap="outerHTML" style="background: #4CAF50; color: white; border: none; padding: 5px 10px; cursor: pointer;">Simpan</button>
-        <button hx-get="{% url 'get_item' item.id %}" hx-target="closest tr" hx-swap="outerHTML" style="background: #666; color: white; border: none; padding: 5px 10px; cursor: pointer;">Batal</button>
+        <button hx-post="{% url 'edit_item' item.id %}" hx-target="closest tr" hx-swap="outerHTML" class="btn btn-sm btn-success">Simpan</button>
+        <button hx-get="{% url 'get_item' item.id %}" hx-target="closest tr" hx-swap="outerHTML" class="btn btn-sm btn-secondary">Batal</button>
     </td>
 </tr>

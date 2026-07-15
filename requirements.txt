@@ -1,0 +1,12 @@
+asgiref==3.12.1
+click==8.4.2
+cssbeautifier==2.0.3
+Django==6.0.7
+djlint==1.40.7
+EditorConfig==0.17.1
+jsbeautifier==2.0.3
+json5==0.15.0
+pathspec==1.1.1
+PyYAML==6.0.3
+regex==2026.7.10
+sqlparse==0.5.5
